@@ -1,7 +1,7 @@
 package com.kdt.lecture;
 
-import com.kdt.lecture.repository.CustomerRepository;
-import com.kdt.lecture.repository.domain.CustomerEntity;
+import com.kdt.lecture.legacy.repository.CustomerRepository;
+import com.kdt.lecture.legacy.repository.domain.CustomerEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,7 +1,7 @@
 package com.kdt.lecture;
 
-import com.kdt.lecture.repository.CustomerMapper;
-import com.kdt.lecture.repository.domain.Customer;
+import com.kdt.lecture.legacy.repository.CustomerMapper;
+import com.kdt.lecture.legacy.repository.domain.Customer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.kdt.lecture.repository;
+package com.kdt.lecture.legacy.repository;
 
-import com.kdt.lecture.repository.domain.Customer;
+import com.kdt.lecture.legacy.repository.domain.Customer;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

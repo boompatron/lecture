@@ -1,4 +1,4 @@
-package com.kdt.lecture.repository.domain;
+package com.kdt.lecture.legacy.repository.domain;
 
 import org.apache.ibatis.type.Alias;
 

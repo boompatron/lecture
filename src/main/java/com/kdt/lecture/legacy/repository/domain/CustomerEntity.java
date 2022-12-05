@@ -1,4 +1,4 @@
-package com.kdt.lecture.repository.domain;
+package com.kdt.lecture.legacy.repository.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

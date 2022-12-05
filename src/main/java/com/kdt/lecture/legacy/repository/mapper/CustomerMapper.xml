@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kdt.lecture.repository.CustomerMapper">
+<mapper namespace="com.kdt.lecture.legacy.repository.CustomerMapper">
     <insert id="save">
         INSERT INTO customers (id, first_name, last_name)
         VALUES (#{id}, #{firstName}, #{lastName})
