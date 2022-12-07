@@ -23,8 +23,8 @@ public class ImproveMappingTest {
         transaction.begin();
 
         Food food = new Food();
-        food.setPrice(10000);
-        food.setStockQuantity(100);
+        food.setPrice(20000);
+        food.setStockQuantity(240);
         food.setChef("백종원");
 
         em.persist(food);
