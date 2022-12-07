@@ -73,8 +73,18 @@ public class ProxyTest {
         orderItem.setQuantity(15);
         orderItem.setPrice(5000);
 
-        order.addOrderItem(orderItem); // casecade == all -> orderitem 이 영속화됨 영속성이 전이됨
+        order.addOrderItem(orderItem); // casecade == all -> orderitem 이 영속화됨 영속성이 전이이
+        transaction.commit(); //// flush
+        // -----------------------------------
 
-        transaction.commit();
+        em.clear();
+
+        Order order2 = em.find(Order.class, uuid); // 영속 상태
+        transaction.begin();
+
+        order2.getOrderItems().remove(0); // 고아 상태 delete 쿼리는 실제로 날아가지 않음!
+        // 고아객체 제거를 true로 하면, flush 하는 순간  rds에서도 삭제하겠다
+
+        transaction.commit(); // flush
     }
 }
