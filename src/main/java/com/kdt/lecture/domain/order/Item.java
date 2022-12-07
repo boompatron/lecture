@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "item")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Item {
+public abstract class Item extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
