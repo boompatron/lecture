@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +25,7 @@ public class OrderItem {
     private String orderId;
     @Column(name = "item_id")
     private Long itemId;
+
+    @OneToMany(mappedBy = "orderItem")
+    private List<Item> items = new ArrayList<>();
 }
