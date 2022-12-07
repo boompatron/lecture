@@ -1,7 +1,14 @@
 package com.kdt.lecture.domain.order;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "member")
 public class Member {
@@ -15,7 +22,6 @@ public class Member {
     @Column(name = "nick_name", nullable = false, length = 30, unique = true)
     private String nickName;
 
-    @Column(name = "age", nullable = false)
     private int age;
 
     @Column(name = "address", nullable = false)
@@ -24,51 +30,6 @@ public class Member {
     @Column(name = "description")
     private String description;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 }

@@ -71,4 +71,39 @@ public class OrderPersistenceTest {
         // orderEntity.getMember() // 객체중심 설계라면 객체그래프 탐색을 해야하지 않을까?
         log.info("nick : {}", orderMemberEntity.getNickName());
     }
+
+    @Test
+    @DisplayName("연관관계 테스트")
+    void relationshipTest(){
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        transaction.begin();
+
+        Member member = new Member();
+        member.setName("bosub");
+        member.setNickName("백둥이");
+        member.setAddress("서울시 노원구");
+        member.setAge(25);
+
+        em.persist(member);
+
+        Order order = new Order();
+        order.setUuid(UUID.randomUUID().toString());
+        order.setOrderStatus(OPENED);
+        order.setOrderDateTime(LocalDateTime.now());
+        order.setMemo("판교로 가고파요");
+        order.setMember(member);
+
+        em.persist(order);
+
+        transaction.commit();
+
+        em.clear(); // 쿼리를 보기 위해서 clear 해줌
+        Order entity = em.find(Order.class, order.getUuid());
+
+        log.info("{}", entity.getMember().getNickName()); // 객체 그래프 탐색
+        log.info("{}", entity.getMember().getOrders().size());
+        log.info("{}", order.getMember().getOrders().size());
+    }
 }

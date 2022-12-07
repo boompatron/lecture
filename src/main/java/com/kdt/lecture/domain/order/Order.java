@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -15,16 +16,29 @@ public class Order {
     @Column(name = "id") // 명시하면 직접 생성 전략
     private String uuid;
 
-    @Column(name = "memo")
-    private String memo;
-
     @Enumerated(value = EnumType.STRING)
     private OrderStatus orderStatus;
 
     @Column(name = "order_datetime", columnDefinition = "TIMESTAMP")
     private LocalDateTime orderDateTime;
 
-    // member_fk
-    @Column(name = "member_id")
+    @Lob
+    private String memo;
+
+    @Column(name = "member_id", insertable = false, updatable = false) // fk
     private Long memberId;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id", referencedColumnName = "id")
+    private Member member;
+
+    public void setMember(Member member){
+        if(Objects.nonNull(this.member)){
+            member.getOrders().remove(this);
+        }
+
+        this.member = member;
+        member.getOrders().add(this);
+        // 연관관계 편의 메소드
+    }
 }
