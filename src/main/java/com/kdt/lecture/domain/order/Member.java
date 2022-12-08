@@ -14,10 +14,10 @@ import java.util.List;
 @Table(name = "member")
 public class Member extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE) // h2
+    @GeneratedValue(strategy = GenerationType.AUTO) // h2
     private Long id;
 
-    @Column(name = "name", nullable = false, length = 20)
+    @Column(name = "name", nullable = false, length = 30)
     private String name;
 
     @Column(name = "nick_name", nullable = false, length = 30, unique = true)

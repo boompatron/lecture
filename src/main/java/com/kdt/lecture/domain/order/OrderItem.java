@@ -25,8 +25,8 @@ public class OrderItem extends BaseEntity {
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 
-    @OneToMany(mappedBy = "orderItem")
-    private List<Item> items;
+    @OneToMany(mappedBy = "orderItem", cascade = CascadeType.ALL)
+    private List<Item> items = new ArrayList<>();
 
     public void setOrder(Order order) {
         if (Objects.nonNull(this.order)) {
